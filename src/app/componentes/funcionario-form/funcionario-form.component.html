@@ -1,0 +1,44 @@
+<mat-card>
+<h1>{{btnTitulo}}</h1>
+
+<!-- Formulário de cadastro -->
+<form [formGroup]="funcionarioForm" (ngSubmit)="submit()" #formDit="ngForm">
+    <input type="hidden" formControlName="id">
+
+    <div class="input_box">
+        
+        <mat-form-field>
+            <mat-label for="">Nome:</mat-label>
+            <input matInput type="text" formControlName="nome" placeholder="Insira o nome " required=>
+        </mat-form-field>
+    </div>
+
+    <div class="input_box">
+
+        <mat-form-field>
+            <mat-label for="">RG:</mat-label>
+            <input matInput type="text" formControlName="rg" placeholder="Nº do RG " required=>
+        </mat-form-field>
+    </div>
+   
+    <div class="input_box">
+
+        <mat-form-field>
+        <mat-label for="">Departamento: </mat-label>
+        <mat-select id="departamento" formControlName="departamento" required="">
+            <mat-option value="RH">Recursos Humanos</mat-option>
+            <mat-option value="Financeiro">Financeiro</mat-option>
+            <mat-option value="Compras">Compras</mat-option>
+            <mat-option value="Atendimento">Atendimento</mat-option>
+            <mat-option value="Zeladoria">Zeladoria</mat-option>
+        </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="btn-box">
+        <!-- Botão cadastrar só será habilitado quando todas as informações do formulário for preenchida -->
+        <button type="submit" [disabled]="!funcionarioForm.valid" mat-raised-button color="accent">{{btnAcao}}</button>
+        <button routerLink="" mat-raised-button>Voltar</button>
+    </div>
+</form>
+</mat-card>
